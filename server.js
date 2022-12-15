@@ -7,6 +7,9 @@ var cors = require("cors");
 const app = express();
 app.use(cors({ credentials: true, origin: true }));
 
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
+
 const https = require("https");
 const server = https.createServer({ key, cert }, app);
 
