@@ -12,14 +12,19 @@ export class Randomizer extends Component {
       membershipType: "",
       displayName: "",
       characters: [],
+      selectedClass: "",
+      titanEquipped: [],
+      titanInventor: [],
+      hunterEquipped: [],
+      hunterInventory: [],
+      warlockEquipped: [],
+      warlockInventory: [],
+      vault: [],
     };
-    this.getAccounts = this.getAccounts.bind(this);
+    this.equipItem = this.equipItem.bind(this);
   }
-  async getAccounts() {
-    sessionStorage.setItem(
-      "accessToken",
-      getToken(sessionStorage.getItem("accessToken"))
-    );
+  async componentDidMount() {
+    getToken(sessionStorage.getItem("accessToken"));
     const request = await fetch(
       `https://www.bungie.net/Platform/Destiny2/254/Profile/${sessionStorage.getItem(
         "membershipId"
@@ -45,8 +50,9 @@ export class Randomizer extends Component {
     );
   }
   async getCharacters() {
+    getToken(sessionStorage.getItem("accessToken"));
     const request = await fetch(
-      `https://www.bungie.net/Platform/Destiny2/${this.state.membershipType}/Profile/${this.state.membershipId}/?components=200`,
+      `https://www.bungie.net/Platform/Destiny2/${this.state.membershipType}/Profile/${this.state.membershipId}/?components=102,200,201,205`,
       {
         method: "GET",
         headers: {
@@ -58,17 +64,37 @@ export class Randomizer extends Component {
       }
     );
     const response = await request.json();
-    console.log(response);
+    const charIds = Object.keys(response["Response"]["characters"]["data"]).map(
+      (x) => x
+    );
+    this.setState({ characters: charIds });
   }
+  equipItem = async () => {
+    getToken(sessionStorage.getItem("accessToken"));
+    const response = await fetch(
+      `https://www.bungie.net/Platform/Destiny2/Actions/Items/EquipItems/`,
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+          "X-API-Key": `${this.state.API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          itemId: "6917529582624172129",
+          characterId: `${this.state.characters[0]}`,
+          membershipType: `${this.state.membershipType}`,
+        }),
+      }
+    );
+    const data = await response.json();
+    console.log(data);
+  };
   render() {
     return (
       <div>
-        <h3>Randomizer</h3>
-        {!(this.state.displayName.length > 0) ? (
-          <button onClick={this.getAccounts}>Get Accounts</button>
-        ) : (
-          <h1>Welcome {this.state.displayName}</h1>
-        )}
+        <h1>Welcome {this.state.displayName}</h1>
+        <button onClick={this.equipItem}>Equip</button>
       </div>
     );
   }

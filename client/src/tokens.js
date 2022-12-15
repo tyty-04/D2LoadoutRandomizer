@@ -6,10 +6,8 @@ export const getToken = async () => {
     const token = await getValidTokenFromServer(refreshtoken);
     sessionStorage.setItem("accessToken", token.accessToken);
     sessionStorage.setItem("expirationDate", newExpirationDate());
-    return token.accessToken;
   } else {
     console.log("tokens.js 11 | token not expired");
-    return sessionStorage.getItem("accessToken");
   }
 };
 
