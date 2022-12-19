@@ -39,6 +39,7 @@ function App() {
       if (accessToken && refreshToken) {
         storeTokenData(accessToken, refreshToken, membershipId, expirationDate);
         setIsLoggedIn(true);
+        localStorage.setItem("loggedIn", isLoggedIn);
       }
     } catch (error) {
       console.log("App.js 12 | error", error);
@@ -66,21 +67,21 @@ function App() {
     membershipId,
     expirationDate
   ) => {
-    sessionStorage.setItem("accessToken", token);
-    sessionStorage.setItem("refreshToken", refreshToken);
-    sessionStorage.setItem("membershipId", membershipId);
-    sessionStorage.setItem("expirationDate", expirationDate);
+    localStorage.setItem("accessToken", token);
+    localStorage.setItem("refreshToken", refreshToken);
+    localStorage.setItem("membershipId", membershipId);
+    localStorage.setItem("expirationDate", expirationDate);
   };
 
   const signOut = () => {
     setIsLoggedIn(false);
-    sessionStorage.clear();
+    localStorage.clear();
   };
 
   return (
     <div className="App">
       <h1>Destiny Loadout Randomizer</h1>
-      {!isLoggedIn ? (
+      {!localStorage.getItem("loggedIn") ? (
         <a href="https://www.bungie.net/en/OAuth/Authorize?client_id=42261&response_type=code">
           <button onClick={(window.onload = createBungieAuthLink)}>
             Login

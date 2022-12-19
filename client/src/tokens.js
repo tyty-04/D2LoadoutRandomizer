@@ -2,10 +2,10 @@ import React from "react";
 
 export const getToken = async () => {
   if (tokenExpired()) {
-    const refreshtoken = sessionStorage.getItem("refreshToken");
+    const refreshtoken = localStorage.getItem("refreshToken");
     const token = await getValidTokenFromServer(refreshtoken);
-    sessionStorage.setItem("accessToken", token.accessToken);
-    sessionStorage.setItem("expirationDate", newExpirationDate());
+    localStorage.setItem("accessToken", token.accessToken);
+    localStorage.setItem("expirationDate", newExpirationDate());
   } else {
     console.log("tokens.js 11 | token not expired");
   }
@@ -20,7 +20,7 @@ const newExpirationDate = () => {
 const tokenExpired = () => {
   const now = Date.now();
 
-  const expirationDate = sessionStorage.getItem("expirationDate");
+  const expirationDate = localStorage.getItem("expirationDate");
   const expDate = new Date(expirationDate);
 
   if (now > expDate.getTime()) {
