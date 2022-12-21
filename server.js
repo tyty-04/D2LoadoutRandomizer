@@ -14,13 +14,7 @@ app.use(express.json());
 const https = require("https");
 const server = https.createServer({ key, cert }, app);
 
-const PORT = 3000;
+const PORT = 5000;
 server.listen(PORT, () => {
   console.log(`Server is listening on ${PORT}`);
-});
-
-app.use(express.static(path.join(__dirname, "build")));
-
-app.get("/*", (req, res) => {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
 });

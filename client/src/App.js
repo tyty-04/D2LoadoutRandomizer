@@ -39,7 +39,6 @@ function App() {
       if (accessToken && refreshToken) {
         storeTokenData(accessToken, refreshToken, membershipId, expirationDate);
         setIsLoggedIn(true);
-        localStorage.setItem("loggedIn", isLoggedIn);
       }
     } catch (error) {
       console.log("App.js 12 | error", error);
@@ -81,7 +80,7 @@ function App() {
   return (
     <div className="App">
       <h1>Destiny Loadout Randomizer</h1>
-      {!localStorage.getItem("loggedIn") ? (
+      {!isLoggedIn ? (
         <a href="https://www.bungie.net/en/OAuth/Authorize?client_id=42261&response_type=code">
           <button onClick={(window.onload = createBungieAuthLink)}>
             Login
