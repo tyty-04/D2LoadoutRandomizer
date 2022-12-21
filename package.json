@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -18,5 +19,8 @@
     "nodemon": "^2.0.20",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"
+  },
+  "engines": {
+    "node": "18.12.1"
   }
 }

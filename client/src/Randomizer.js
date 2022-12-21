@@ -1,4 +1,3 @@
-import e from "cors";
 import React, { Component } from "react";
 import { getToken } from "./tokens";
 
@@ -6177,7 +6176,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.gauntlets,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
