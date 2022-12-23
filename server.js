@@ -1,7 +1,6 @@
 const fs = require("fs");
 const key = fs.readFileSync("./localhost-key.pem");
 const cert = fs.readFileSync("./localhost.pem");
-const path = require("path");
 
 const express = require("express");
 var cors = require("cors");

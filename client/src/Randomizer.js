@@ -370,7 +370,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -561,7 +561,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -649,7 +649,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.gauntlets,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -747,7 +747,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -914,7 +914,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -992,7 +992,7 @@ export class Randomizer extends Component {
                       if (legArmor.dismantlePermission == 1) {
                         exoticArmor = true;
                       }
-                      chestArmor = this.setItem(this.state.helmet, exoticArmor);
+                      chestArmor = this.setItem(this.state.chestArmor, exoticArmor);
                     }
                   }
                 }
@@ -1420,7 +1420,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -1611,7 +1611,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.classArmor,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -1699,7 +1699,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.gauntlets,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
@@ -1948,7 +1948,7 @@ export class Randomizer extends Component {
                       if (gauntlets.dismantlePermission == 1) {
                         exoticArmor = true;
                       }
-                      chestArmor = this.setItem(this.state.helmet, exoticArmor);
+                      chestArmor = this.setItem(this.state.chestArmor, exoticArmor);
                     }
                   }
                 } else if (secondArmorSlot == 3) {
@@ -2034,7 +2034,7 @@ export class Randomizer extends Component {
                         exoticArmor = true;
                       }
                       chestArmor = this.setItem(
-                        this.state.gauntlets,
+                        this.state.chestArmor,
                         exoticArmor
                       );
                     }
